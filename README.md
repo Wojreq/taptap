@@ -1,3 +1,4 @@
+![Logo](build/ikona.png)
 ### **Użytek**
 
 Po uruchomieniu aplikacja pojawia sie w Trayu na dole paska
