@@ -10,7 +10,7 @@ function createWindow() {
   win = new BrowserWindow({
     width: 360,
     height: 480,
-    icon: path.join(__dirname, 'icon.ico'), // <- ta linijka
+    icon: path.join(__dirname, 'icon.ico'),
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: false,
@@ -27,7 +27,7 @@ function createWindow() {
 }
 
 function createTray() {
-const iconPath = path.join(__dirname, 'icon.ico'); // użyj dobrej rozdzielczości!
+const iconPath = path.join(__dirname, 'icon.ico');
 
 tray = new Tray(iconPath);
 const contextMenu = Menu.buildFromTemplate([

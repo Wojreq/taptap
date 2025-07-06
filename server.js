@@ -10,7 +10,6 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// Serwuj pliki statyczne z folderu 'public'
 app.use(express.static('public'));
 
 let client = null;
