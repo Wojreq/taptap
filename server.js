@@ -57,7 +57,9 @@ app.post('/start-bot', (req, res) => {
               clearInterval(interval);
               return;
             }
-            client.say(channel, `POLICE tapujcie widzowie ${link} POLICE`);
+            const messageTemplate = botSettings.bot_message || 'POLICE tapujcie widzowie {link}';
+            const messageToSend = messageTemplate.replace('{link}', link);
+            client.say(channel, messageToSend);
             count++;
           }, spamDelay * 1000);
         }

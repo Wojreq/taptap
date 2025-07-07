@@ -61,6 +61,7 @@
     <input id="twitch_channel" placeholder="Kanał Twitch" />
     <input id="spam_count" placeholder="Ile razy spamować? (np. 5)" type="number" min="1" />
     <input id="spam_delay" placeholder="Opóźnienie (sekundy, np. 1.2)" type="number" step="0.1" min="0.1" />
+    <input id="bot_message" placeholder="Wiadomość bota (np. POLICE klikajcie...)" />
     <button onclick="saveSettings()">Zapisz</button>
     <div class="saved" id="status"></div>
   </div>
@@ -73,6 +74,7 @@
         twitch_channel: document.getElementById('twitch_channel').value.trim(),
         spam_count: parseInt(document.getElementById('spam_count').value) || 3,
         spam_delay: parseFloat(document.getElementById('spam_delay').value) || 1.0,
+        bot_message: document.getElementById('bot_message').value.trim() || 'POLICE klikajcie widzowie' 
       };
       localStorage.setItem('instreamly_bot_settings', JSON.stringify(settings));
 
