@@ -44,7 +44,9 @@ client.on('message', (channel, userstate, message, self) => {
   if (self) return;
 
   const sender = userstate['username']?.toLowerCase();
-  const channelOwner = botSettings.twitch_channel?.toLowerCase();
+  const channelOwner = (botSettings.twitch_channel || '').replace(/^#/, '').toLowerCase();
+
+  console.log('Nadawca:', sender, '| Właściciel kanału:', channelOwner);
 
   if (sender !== channelOwner) return;
 
