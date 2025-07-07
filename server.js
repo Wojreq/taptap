@@ -40,30 +40,37 @@ app.post('/start-bot', (req, res) => {
     .then(() => {
       console.log('Bot połączony!');
 
-      client.on('message', (channel, userstate, message, self) => {
-        if (self) return;
+client.on('message', (channel, userstate, message, self) => {
+  if (self) return;
 
-        if (message.startsWith('https://instream.ly/')) {
-          const parts = message.split('/');
-          const lastPart = parts[parts.length - 1];
-          const link = `https://instream.ly/${lastPart}`;
+  const sender = userstate['username']?.toLowerCase();
+  const channelOwner = botSettings.twitch_channel?.toLowerCase();
 
-          const spamCount = botSettings.spam_count || 3;
-          const spamDelay = botSettings.spam_delay || 1.0;
+  if (sender !== channelOwner) return;
 
-          let count = 0;
-          const interval = setInterval(() => {
-            if (count >= spamCount) {
-              clearInterval(interval);
-              return;
-            }
-            const messageTemplate = botSettings.bot_message || 'POLICE tapujcie widzowie {link}';
-            const messageToSend = messageTemplate.replace('{link}', link);
-            client.say(channel, messageToSend);
-            count++;
-          }, spamDelay * 1000);
-        }
-      });
+  if (message.startsWith('https://instream.ly/')) {
+    const parts = message.split('/');
+    const lastPart = parts[parts.length - 1];
+    const link = `https://instream.ly/${lastPart}`;
+
+    const spamCount = botSettings.spam_count || 3;
+    const spamDelay = botSettings.spam_delay || 1.0;
+
+    let count = 0;
+    const interval = setInterval(() => {
+      if (count >= spamCount) {
+        clearInterval(interval);
+        return;
+      }
+
+      const messageTemplate = botSettings.bot_message || 'POLICE tapujcie widzowie {link}';
+      const messageToSend = messageTemplate.replace('{link}', link);
+      client.say(channel, messageToSend);
+      count++;
+    }, spamDelay * 1000);
+  }
+});
+
 
       res.json({ status: 'Bot uruchomiony!' });
     })
