@@ -17,3 +17,5 @@ Kanał Twitch - Konto na którym ma być wykrywane i spamowane
 Ile razy spamować - To logiczne
 
 Opóźnienie (delay) - To też chyba logiczne
+
+Wiadomość bota - żeby zmienić domyślną wiadomość wysyłaną przez bota, napisz {link} żeby wstawić link
