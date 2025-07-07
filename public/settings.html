@@ -57,23 +57,36 @@
   <div class="box">
     <h2>Twitch Bot Settings</h2>
     <div style="position: relative;">
-  <input id="twitch_token" type="password" placeholder="OAuth Twitch Token" style="padding-right: 40px;" />
+<div style="position: relative; width: 100%;">
+  <input
+    id="twitch_token"
+    type="password"
+    placeholder="OAuth Twitch Token"
+    style="
+      width: 100%;
+      padding-right: 35px;
+      box-sizing: border-box;
+    "
+  />
   <button
     type="button"
     id="toggle_token"
     style="
       position: absolute;
       top: 50%;
-      right: 8px;
+      right: 10px;
       transform: translateY(-50%);
       background: none;
       border: none;
-      color: white;
+      color: #fff;
       cursor: pointer;
       font-size: 16px;
+      padding: 0;
+      line-height: 1;
     "
   >👁️</button>
 </div>
+
 
     <input id="twitch_nick" placeholder="Twitch Login (nick)" />
     <input id="twitch_channel" placeholder="Kanał Twitch" />
