@@ -43,14 +43,10 @@ app.post('/start-bot', (req, res) => {
 client.on('message', (channel, userstate, message, self) => {
   if (self) return;
 
-  const sender = userstate['username']?.toLowerCase();
-  const channelOwner = (botSettings.twitch_channel || '').replace(/^#/, '').toLowerCase();
+  const isBroadcaster = userstate.badges && userstate.badges.broadcaster === '1';
+  if (!isBroadcaster) return;
 
-  console.log('Nadawca:', sender, '| Właściciel kanału:', channelOwner);
-
-  if (sender !== channelOwner) return;
-
-  if (message.startsWith('https://instream.ly/')) {
+  if (message.includes('https://instream.ly/')) {
     const parts = message.split('/');
     const lastPart = parts[parts.length - 1];
     const link = `https://instream.ly/${lastPart}`;
@@ -72,6 +68,7 @@ client.on('message', (channel, userstate, message, self) => {
     }, spamDelay * 1000);
   }
 });
+
 
 
       res.json({ status: 'Bot uruchomiony!' });
