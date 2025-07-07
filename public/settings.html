@@ -56,38 +56,7 @@
 <body>
   <div class="box">
     <h2>Twitch Bot Settings</h2>
-    <div style="position: relative;">
-<div style="position: relative; width: 100%;">
-  <input
-    id="twitch_token"
-    type="password"
-    placeholder="OAuth Twitch Token"
-    style="
-      width: 100%;
-      padding-right: 35px;
-      box-sizing: border-box;
-    "
-  />
-  <button
-    type="button"
-    id="toggle_token"
-    style="
-      position: absolute;
-      top: 50%;
-      right: 10px;
-      transform: translateY(-50%);
-      background: none;
-      border: none;
-      color: #fff;
-      cursor: pointer;
-      font-size: 16px;
-      padding: 0;
-      line-height: 1;
-    "
-  >👁️</button>
-</div>
-
-
+    <input id="twitch_token" type="password" placeholder="OAuth Twitch Token" />
     <input id="twitch_nick" placeholder="Twitch Login (nick)" />
     <input id="twitch_channel" placeholder="Kanał Twitch" />
     <input id="spam_count" placeholder="Ile razy spamować? (np. 5)" type="number" min="1" />
@@ -128,26 +97,11 @@
       }
     }
 
-    // Wczytaj przy starcie
     window.onload = () => {
       const saved = JSON.parse(localStorage.getItem('instreamly_bot_settings') || '{}');
       for (const key in saved) {
         if (document.getElementById(key)) {
           document.getElementById(key).value = saved[key];
-
-          const tokenInput = document.getElementById('twitch_token');
-const toggleBtn = document.getElementById('toggle_token');
-
-toggleBtn.addEventListener('click', () => {
-  if (tokenInput.type === 'password') {
-    tokenInput.type = 'text';
-    toggleBtn.textContent = '🙈';
-  } else {
-    tokenInput.type = 'password';
-    toggleBtn.textContent = '👁️';
-  }
-});
-
         }
       }
     };
