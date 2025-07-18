@@ -4,8 +4,8 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "dist86": "electron-builder --win --ia32 --dir --config build-x86.json",
-    "dist64": "electron-builder --win --x64 --dir --config build-x64.json"
+    "dist": "electron-builder",
+    "dist64": "electron-builder --win --x64"
   },
   "devDependencies": {
     "electron": "^26.6.10",
@@ -32,3 +32,5 @@
     }
   }
 }
+
+
